@@ -56,7 +56,7 @@ function contain2() {
   cancel.setAttribute('class', 'cancel');
   cancel.innerHTML = 'Cancel';
   button.append(sub, cancel);
-  element.append(i, br1, gfg, br, button);
+  element.append(head, i, br1, gfg, br, button);
   document.body.append(element);
 }
 
