@@ -27,3 +27,25 @@ header {
   width: 99%;
   border: none;
 }
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-left: 45vw;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  margin-left: 45vw;
+  margin-top: 10vh;
+  width: 30%;
+}
+
+.submit {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  background-color: rgb(0, 119, 128);
+  color: wheat;
+}
