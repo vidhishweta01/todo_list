@@ -1,10 +1,14 @@
 body {
   background-color: rgb(234, 242, 243);
 }
+
 header {
   background-color: rgb(4, 24, 43);
   color: blanchedalmond;
   padding-left: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .sidenav {
@@ -12,7 +16,7 @@ header {
   width: 160px;
   position: fixed;
   z-index: 1;
-  top: 49px;
+  top: 6.19vh;
   left: 0;
   background-color: rgb(175, 231, 238);
   overflow-x: hidden;
@@ -27,10 +31,16 @@ header {
   width: 99%;
   border: none;
 }
+
+.show {
+  background-color:rgb(0, 119, 128) !important;
+}
 .content {
   display: flex;
   flex-direction: column;
-  margin-left: 45vw;
+  justify-content: center;
+  width: 50%;
+  margin-left: 35vw;
 }
 
 .form {
@@ -42,10 +52,80 @@ header {
   width: 30%;
 }
 
-.submit {
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
+.button-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.submit,
+.cancel{
+  width: 49%;
   background-color: rgb(0, 119, 128);
   color: wheat;
+}
+
+.cancel {
+  background-color: rgb(255, 115, 0);
+}
+
+.project1 {
+  background-color:rgb(174, 245, 250) !important;
+  margin-bottom: 1vh;
+  margin-top: 1vh;
+  padding: 2vh;
+}
+
+.modal {
+  display: none;
+  z-index: 3;
+  position: fixed;
+  left: 0;
+  top: 44px !important;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 100px;
+}
+
+.modal-content {
+  background-color: rgb(4, 24, 43);
+  margin: auto;
+  position: relative !important;
+  padding: 10px !important;
+  outline: 0 !important;
+  width: 66% !important;
+  color: white !important;
+  height: 1024px !important;
+}
+
+.contain {
+  margin-top: 3vh;
+  margin-left: 3vw;
+  text-align: center;
+  padding: 10px;
+}
+
+.cross {
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: black;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer !important;
+  white-space: nowrap;
+  font-size: 4vh !important;
+  font-weight: bolder !important;
+}
+
+.display-top-right {
+  position: absolute;
+  right: 0;
+  top: 0;
 }

@@ -1,3 +1,5 @@
+import { divide } from "lodash";
+
 function TopNav() {
   const element = document.createElement('header');
   const todo = document.createElement('h1');
@@ -9,27 +11,16 @@ function TopNav() {
 function sideNav() {
   const element = document.createElement('div');
   element.setAttribute('class', 'sidenav');
-  const inbox = document.createElement('div');
   const project = document.createElement('div');
   project.setAttribute('class', 'project');
   const projHead = document.createElement('h2');
   projHead.innerHTML = 'Projects';
-  project.append(projHead);
+  const show = document.createElement('button');
+  show.setAttribute('class', 'show');
+  show.innerHTML = 'show';
+  project.append(projHead, show);
 
-  const addProject = document.createElement('button');
-  addProject.setAttribute('class', 'add-project');
-  addProject.innerHTML = '+ Add Project';
-
-  const inbx = document.createElement('button');
-  inbx.innerHTML = 'Inbox';
-  const today = document.createElement('button');
-  today.innerHTML = 'Today';
-  const thisWeek = document.createElement('button');
-  thisWeek.innerHTML = 'This Week';
-  
-  inbox.append(inbx, today, thisWeek);
-
-  element.append(inbox, project, addProject);
+  element.append(project);
 
   document.body.append(element);
 }
@@ -56,16 +47,43 @@ function contain2() {
   const gfg = document.createElement("input") 
   gfg.setAttribute("type", "date");
   gfg.setAttribute("id", "1od");
+  const button = document.createElement('div');
+  button.setAttribute('class', 'button-div');
   const sub = document.createElement('button');
   sub.setAttribute('class', 'submit');
   sub.innerHTML = 'Submit';
-  element.append(i, br1, gfg, br, sub);
+  const cancel = document.createElement('button');
+  cancel.setAttribute('class', 'cancel');
+  cancel.innerHTML = 'Cancel';
+  button.append(sub, cancel);
+  element.append(i, br1, gfg, br, button);
+  document.body.append(element);
+}
+
+function contain3() {
+  const element = document.createElement('div');
+  element.setAttribute('id', 'id01');
+  element.setAttribute('class', 'modal');
+  const modalContent = document.createElement('div');
+  modalContent.setAttribute('class', 'modal-content');
+  const contain = document.createElement('div');
+  contain.setAttribute('class', 'contain');
+  const span = document.createElement('span');
+  span.setAttribute('class', 'cross display-top-right');
+  span.innerHTML = '&times;';
+  const par = document.createElement('div');
+  par.setAttribute('class', 'conten');
+  par.innerHTML = 'project not present to delete';
+  contain.append(span, par);
+  modalContent.append(contain);
+  element.append(modalContent);
   document.body.append(element);
 }
 
 export default function setup() {
   TopNav();
   sideNav();
-  contain();
   contain2();
+  contain();
+  contain3();
 }
