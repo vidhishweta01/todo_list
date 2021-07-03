@@ -1,5 +1,3 @@
-import { divide } from "lodash";
-
 function TopNav() {
   const element = document.createElement('header');
   const todo = document.createElement('h1');
@@ -40,13 +38,13 @@ function contain2() {
   const br1 = document.createElement('br');
   element.setAttribute('id', 'form');
   element.setAttribute('class', 'form');
-  var i = document.createElement("input");
-  i.setAttribute('type',"text");
-  i.setAttribute('name', "name");
-  i.setAttribute('id', "101");
-  const gfg = document.createElement("input") 
-  gfg.setAttribute("type", "date");
-  gfg.setAttribute("id", "1od");
+  const i = document.createElement('input');
+  i.setAttribute('type','text');
+  i.setAttribute('name', 'name');
+  i.setAttribute('id', '101');
+  const gfg = document.createElement('input');
+  gfg.setAttribute('type', 'date');
+  gfg.setAttribute('id', '1od');
   const button = document.createElement('div');
   button.setAttribute('class', 'button-div');
   const sub = document.createElement('button');

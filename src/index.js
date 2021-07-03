@@ -1,9 +1,9 @@
 import setup from './js/dom';
 import './style.css';
 import Project from './js/project';
-import { updateStorage } from './js/storage';
-import { GetData } from './js/storage';
-import { store } from './js/storage';
+import { updateStorage, GetData, store } from './js/storage';
+// import { GetData } from './js/storage';
+// import { store } from './js/storage';
 
 let array = [];
 setup();
@@ -17,6 +17,13 @@ function free(cont) {
   }
 }
 
+function deleteProject() {
+  localStorage.clear();
+  array.splice(this.parentNode, 1);
+  this.parentNode.remove();
+  store(array);
+}
+
 function display() {
   const h = GetData();
   if (h) {
@@ -24,7 +31,7 @@ function display() {
   }
   const contain = document.querySelector('.content');
   free(contain);
-  
+
   array.forEach((project) => {
     const Div = document.createElement('div');
     Div.setAttribute('class', 'project1');
@@ -39,7 +46,7 @@ function display() {
     const dele = document.createElement('button');
     dele.setAttribute('class', 'del');
     dele.innerHTML = 'delete';
-    
+
     Div.append(titl, date, dele);
     contain.appendChild(Div);
 
@@ -54,14 +61,6 @@ function newProject(name, date) {
   updateStorage(project);
   const contain2 = document.querySelector('.content');
   free(contain2);
-}
-
-function deleteProject() {
-  localStorage.clear();
-  array.splice(this.parentNode, 1);
-  this.parentNode.remove();
-  store(array);
-
 }
 
 function cross() {
@@ -79,11 +78,13 @@ submitButton.addEventListener('click', (getData) => {
 
 const cancel = document.querySelector('.cancel');
 cancel.addEventListener('click', (e) => {
+  e.preventDefault();
   form.reset();
 });
 
 const show = document.querySelector('.show');
 show.addEventListener('click', (ek) => {
+  ek.preventDefault();
   display();
 });
 
