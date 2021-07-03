@@ -52,6 +52,8 @@ function newProject(name, date) {
   project.name = name;
   project.date = date;
   updateStorage(project);
+  const contain2 = document.querySelector('.content');
+  free(contain2);
 }
 
 function deleteProject() {
