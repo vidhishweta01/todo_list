@@ -39,7 +39,7 @@ function contain2() {
   element.setAttribute('id', 'form');
   element.setAttribute('class', 'form');
   const i = document.createElement('input');
-  i.setAttribute('type','text');
+  i.setAttribute('type', 'text');
   i.setAttribute('name', 'name');
   i.setAttribute('id', '101');
   const gfg = document.createElement('input');

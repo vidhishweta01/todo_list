@@ -20,7 +20,7 @@ function GetData() {
   if (p) {
     return JSON.parse(p);
   }
- return false;
+  return false;
 }
 
-export { store, updateStorage, GetData};
+export { store, updateStorage, GetData };
