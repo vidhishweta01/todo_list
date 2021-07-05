@@ -25,16 +25,21 @@ header {
   padding-left: 5px;
 }
 
+.side-project {
+  display: flex;
+  flex-direction: row;
+}
 .sidenav button {
   background-color: rgb(175, 231, 238);
   display: block;
   color: rgb(34, 46, 48);
-  width: 99%;
   border: none;
 }
 
+
 .show {
   background-color: rgb(0, 119, 128) !important;
+  width: 99% !important;
 }
 
 .content {
@@ -45,13 +50,24 @@ header {
   margin-left: 35vw;
 }
 
-.form {
+.form,
+.task-form {
   display: flex;
   flex-direction: column;
   align-content: space-between;
   margin-left: 45vw;
   margin-top: 10vh;
   width: 30%;
+}
+
+.form > h6,
+.task-form > h6 {
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.task-form {
+  display: none;
 }
 
 .button-div {
@@ -76,6 +92,11 @@ header {
   margin-bottom: 1vh;
   margin-top: 1vh;
   padding: 2vh;
+}
+
+.AddTask,
+.del {
+  margin-right: 1vw;
 }
 
 .modal {

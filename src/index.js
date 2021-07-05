@@ -2,14 +2,13 @@ import setup from './js/dom';
 import './style.css';
 import Project from './js/project';
 import { updateStorage, GetData, store } from './js/storage';
-// import { GetData } from './js/storage';
-// import { store } from './js/storage';
 
 let array = [];
+let recentProject = [];
 setup();
 const form = document.querySelector('.form');
 
-function free(cont) {
+const free = (cont) => {
   let child = cont.lastElementChild;
   while (child) {
     cont.removeChild(child);
@@ -17,53 +16,78 @@ function free(cont) {
   }
 }
 
-function deleteProject() {
+const deleteProject2 = (name) => {
+  if (recentProject.indexOf(name) !== -1) {
+    console.log('Im here');
+    const j = recentProject.indexOf(name);
+    recentProject.splice(j, 1);
+    sideBar(recentProject);
+  }
+}
+
+
+const deleteProject = () => {
   localStorage.clear();
+  const k = array.slice(this.parentNode)[0].name;
   array.splice(this.parentNode, 1);
   this.parentNode.remove();
   store(array);
+  deleteProject2(k);
+  
 }
 
-function display() {
+const sideBar = (recentProject) => {
+  const pro = document.querySelector('.project');
+  free(pro);
+  recentProject.forEach((project) => {
+    const div = document.createElement('div');
+    div.setAttribute('class', 'side-project')
+    const name = document.createElement('p');
+    name.setAttribute('class', 'titl');
+    name.innerHTML = project;
+    div.append(name);
+    pro.appendChild(div);
+  });
+}
+
+
+const display = () => {
   const h = GetData();
   if (h) {
     array = h;
   }
   const contain = document.querySelector('.content');
   free(contain);
-
   array.forEach((project) => {
     const Div = document.createElement('div');
     Div.setAttribute('class', 'project1');
     const titl = document.createElement('h4');
     titl.setAttribute('class', 'title');
     titl.innerHTML = project.name;
-
-    const date = document.createElement('h3');
-    date.setAttribute('class', 'date');
-    date.innerHTML = project.date;
-
+    const title = document.createElement('h6');
+    title.setAttribute('class', 'titl');
+    title.innerHTML = project.name;
+    const AddTask = document.createElement('button');
+    AddTask.setAttribute('class', 'AddTask');
+    AddTask.innerHTML = '+ Add Task';
     const dele = document.createElement('button');
     dele.setAttribute('class', 'del');
     dele.innerHTML = 'delete';
-
-    Div.append(titl, date, dele);
+    Div.append(titl, AddTask, dele);
     contain.appendChild(Div);
-
     dele.addEventListener('click', deleteProject);
   });
 }
 
-function newProject(name, date) {
+const newProject = (name) => {
   const project = new Project();
   project.name = name;
-  project.date = date;
   updateStorage(project);
   const contain2 = document.querySelector('.content');
   free(contain2);
 }
 
-function cross() {
+const cross = () => {
   document.getElementById('id01').style.display = 'none';
 }
 // Event listener
@@ -71,8 +95,9 @@ const submitButton = document.querySelector('.submit');
 submitButton.addEventListener('click', (getData) => {
   getData.preventDefault();
   const title = document.getElementById('101').value;
-  const date1 = document.getElementById('1od').value;
-  newProject(title, date1);
+  newProject(title);
+  recentProject.push(title);
+  sideBar(recentProject);
   form.reset();
 });
 
