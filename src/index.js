@@ -1,8 +1,12 @@
-import { Today, setup } from './js/dom';
+import { setup } from './js/dom';
 import './style.css';
 import Task from './js/todo';
-import { newProject, newTask } from './js/construc';
-import { GetData, store, updateStorage, storeTask, getTask, updateTask, updateKeys, getkey, storKey } from './js/storage';
+import { newProject } from './js/construc';
+import {
+  GetData, store, storeTask,
+  getTask, updateTask,
+  updateKeys, getkey, storKey
+} from './js/storage';
 
 let array = [];
 let recentProject = [];

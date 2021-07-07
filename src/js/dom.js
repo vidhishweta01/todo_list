@@ -1,12 +1,14 @@
 import Project from './project';
+
 const Today = new Project('Today');
+
 const TopNav = () => {
   const element = document.createElement('header');
   const todo = document.createElement('h1');
   todo.innerHTML = 'TO-DO-LIST >>';
   element.append(todo);
   document.body.append(element);
-}
+};
 
 const sideNav = () => {
   const element = document.createElement('div');
@@ -41,9 +43,8 @@ const sideNav = () => {
   clearAll.setAttribute('class', 'clear-all');
   clearAll.innerHTML = 'clear All';
   element.append(project, clearAll);
-
   document.body.append(element);
-}
+};
 
 const contain = () => {
   const element = document.createElement('div');
@@ -52,13 +53,13 @@ const contain = () => {
   addproject.setAttribute('class', 'add-project');
   addproject.innerHTML = '+ Add Project';
   document.body.append(element);
-}
+};
 
 const contain1 = () => {
   const element = document.createElement('div');
   element.setAttribute('class', 'today');
   document.body.append(element);
-}
+};
 
 const contain2 = () => {
   const element = document.createElement('form');
@@ -82,7 +83,7 @@ const contain2 = () => {
   button.append(sub, cancel);
   element.append(head, i, br, button);
   document.body.append(element);
-}
+};
 
 const contain4 = () => {
   const element = document.createElement('form');
@@ -100,7 +101,7 @@ const contain4 = () => {
   j.setAttribute('type', 'textArea');
   j.setAttribute('description', 'name');
   j.setAttribute('id', '103');
-  
+
   const date = document.createElement('input');
   date.setAttribute('type', 'date');
   date.setAttribute('id', '1od');
@@ -117,8 +118,7 @@ const contain4 = () => {
   button.append(sub, cancel);
   element.append(head, i, head2, j, br2, date, br, button);
   document.body.append(element);
-}
-
+};
 
 const contain3 = () => {
   const element = document.createElement('div');
@@ -138,7 +138,7 @@ const contain3 = () => {
   modalContent.append(contain);
   element.append(modalContent);
   document.body.append(element);
-}
+};
 
 const setup = () => {
   TopNav();
@@ -148,6 +148,6 @@ const setup = () => {
   contain4();
   contain();
   contain3();
-}
+};
 
 export { Today, setup };

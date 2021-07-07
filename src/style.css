@@ -1,4 +1,3 @@
-
 body {
   background-color: rgb(234, 242, 243);
 }
@@ -65,13 +64,13 @@ header {
   display: flex;
   flex-direction: row;
 }
+
 .sidenav button {
   background-color: rgb(175, 231, 238);
   display: block;
   color: rgb(34, 46, 48);
   border: none;
 }
-
 
 .show,
 .show-task {

@@ -1,22 +1,5 @@
-import { Today } from './dom';
 function store(array) {
   localStorage.setItem('array', JSON.stringify(array));
-}
-
-function updateStorage(data) {
-  const arr = GetData();
-  if (arr) {
-    if (arr.indexOf(data) == -1) {
-      arr.push(data);
-      store(arr);
-    } else {
-      return true;
-    }
-  } else {
-    const aa = [];
-    aa.push(data);
-    store(aa);
-  }
 }
 
 function GetData() {
@@ -27,9 +10,26 @@ function GetData() {
   return false;
 }
 
+function updateStorage(data) {
+  const arr = GetData();
+  if (arr) {
+    if (arr.indexOf(data) === -1) {
+      arr.push(data);
+      store(arr);
+    } else {
+      return true;
+    }
+  } else {
+    const aa = [];
+    aa.push(data);
+    store(aa);
+  }
+  return true;
+}
+
 const storeTask = (projectName, task) => {
   localStorage.setItem(projectName, JSON.stringify(task));
-}
+};
 
 const getTask = (projectName) => {
   const task = localStorage.getItem(projectName);
@@ -37,7 +37,7 @@ const getTask = (projectName) => {
     return JSON.parse(task);
   }
   return false;
-}
+};
 
 const updateTask = (projectName, task) => {
   const arr = getTask(projectName);
@@ -49,11 +49,11 @@ const updateTask = (projectName, task) => {
     aa.push(task);
     storeTask(projectName, aa);
   }
-}
+};
 
 const storKey = (keyArray) => {
   localStorage.setItem('keyArray', JSON.stringify(keyArray));
-}
+};
 
 const getkey = () => {
   const keyarr = localStorage.getItem('keyArray');
@@ -61,7 +61,7 @@ const getkey = () => {
     return JSON.parse(keyarr);
   }
   return false;
-}
+};
 
 const updateKeys = (key) => {
   const keyarr = getkey();
@@ -73,6 +73,9 @@ const updateKeys = (key) => {
     keyar.push(key);
     storKey(keyar);
   }
-}
+};
 
-export { store, updateStorage, GetData, storeTask, getTask, updateTask, updateKeys, getkey, storKey };
+export {
+  store, updateStorage, GetData, storeTask,
+  getTask, updateTask, updateKeys, getkey, storKey
+};

@@ -1,6 +1,6 @@
 import Project from './project';
 import Task from './todo';
-import { updateStorage, GetData, store, storeTask, getTask, updateTask } from './storage';
+import { updateStorage, updateTask } from './storage';
 
 const free = (cont) => {
   let child = cont.lastElementChild;
@@ -8,7 +8,7 @@ const free = (cont) => {
     cont.removeChild(child);
     child = cont.lastElementChild;
   }
-}
+};
 
 const newProject = (name) => {
   const project = new Project();
@@ -16,11 +16,11 @@ const newProject = (name) => {
   updateStorage(project);
   const contain2 = document.querySelector('.content');
   free(contain2);
-}
+};
   
 const newTask = (taskName, description, duedate, projectName) => {
   const TasK = new Task(taskName, description, duedate);
   updateTask(projectName, TasK);
-}
+};
 
 export { newProject, newTask };
