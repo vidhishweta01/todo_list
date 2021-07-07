@@ -5,7 +5,8 @@ import { newProject } from './js/construc';
 import {
   GetData, store, storeTask,
   getTask, updateTask,
-  updateKeys, getkey, storKey } from './js/storage';
+  updateKeys, getkey, storKey,
+} from './js/storage';
 
 let array = [];
 const recentProject = [];
@@ -27,7 +28,7 @@ const sideBar = (recentProject) => {
   free(pro);
   recentProject.forEach((project) => {
     const div = document.createElement('div');
-    div.setAttribute('class', 'side-project')
+    div.setAttribute('class', 'side-project');
     const name = document.createElement('p');
     name.setAttribute('class', 'titl');
     name.innerHTML = project;
@@ -55,7 +56,7 @@ function deleteAllTask() {
   }
   k.remove();
   this.remove();
-  displayTask();
+  displayTask(); // eslint-disable-line
 }
 
 const displayTask = () => {

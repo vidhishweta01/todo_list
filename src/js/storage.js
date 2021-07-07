@@ -77,4 +77,5 @@ const updateKeys = (key) => {
 
 export {
   store, updateStorage, GetData, storeTask,
-  getTask, updateTask, updateKeys, getkey, storKey };
+  getTask, updateTask, updateKeys, getkey, storKey,
+};
