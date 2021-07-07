@@ -11,10 +11,14 @@ const TopNav = () => {
 const sideNav = () => {
   const element = document.createElement('div');
   element.setAttribute('class', 'sidenav');
+  const defaultProject = document.createElement('div');
+  defaultProject.setAttribute('class', 'default-project');
   const project = document.createElement('div');
   const today = document.createElement('h5');
   today.innerHTML = Today.name;
   const AddTask = document.createElement('button');
+  AddTask.setAttribute('id', 'Today');
+  defaultProject.append(today, AddTask);
   AddTask.setAttribute('class', 'AddTask');
   AddTask.innerHTML = '+ Add Task';
   project.setAttribute('class', 'projectt');
@@ -22,10 +26,17 @@ const sideNav = () => {
   projHead.innerHTML = 'Recent Projects';
   const projectt = document.createElement('div');
   projectt.setAttribute('class', 'project');
+  const AddProject = document.createElement('button');
+  AddProject.setAttribute('class', 'Add-project');
+  AddProject.innerHTML = '+ Add Project';
   const show = document.createElement('button');
   show.setAttribute('class', 'show');
   show.innerHTML = 'show';
-  project.append(today, AddTask, projHead, projectt, show);
+
+  const showTask = document.createElement('button');
+  showTask.setAttribute('class', 'show-task');
+  showTask.innerHTML = 'Show Task';
+  project.append(defaultProject, projHead, projectt, AddProject, show, showTask);
 
   element.append(project);
 
@@ -38,6 +49,13 @@ const contain = () => {
   const addproject = document.createElement('button');
   addproject.setAttribute('class', 'add-project');
   addproject.innerHTML = '+ Add Project';
+  document.body.append(element);
+}
+
+const contain1 = () => {
+  const element = document.createElement('div');
+  element.setAttribute('class', 'today');
+  element.innerHTML = 'hello';
   document.body.append(element);
 }
 
@@ -69,9 +87,8 @@ const contain4 = () => {
   const element = document.createElement('form');
   element.setAttribute('class', 'task-form');
   const head = document.createElement('h6');
+  head.setAttribute('class', 'projectname');
   head.innerHTML = 'Task';
-  element.setAttribute('id', 'form');
-  element.setAttribute('class', 'form');
   const i = document.createElement('input');
   i.setAttribute('type', 'text');
   i.setAttribute('name', 'name');
@@ -91,10 +108,10 @@ const contain4 = () => {
   const button = document.createElement('div');
   button.setAttribute('class', 'button-div');
   const sub = document.createElement('button');
-  sub.setAttribute('class', 'submit');
+  sub.setAttribute('class', 'task-submit');
   sub.innerHTML = 'Submit';
   const cancel = document.createElement('button');
-  cancel.setAttribute('class', 'cancel');
+  cancel.setAttribute('class', 'task-cancel');
   cancel.innerHTML = 'Cancel';
   button.append(sub, cancel);
   element.append(head, i, head2, j, br2, date, br, button);
@@ -115,18 +132,21 @@ const contain3 = () => {
   span.innerHTML = '&times;';
   const par = document.createElement('div');
   par.setAttribute('class', 'conten');
-  par.innerHTML = 'project not present to delete';
+  par.innerHTML = 'cannot create empty project';
   contain.append(span, par);
   modalContent.append(contain);
   element.append(modalContent);
   document.body.append(element);
 }
 
-export default function setup() {
+const setup = () => {
   TopNav();
   sideNav();
+  contain1();
   contain2();
   contain4();
   contain();
   contain3();
 }
+
+export { Today, setup };

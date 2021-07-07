@@ -1,12 +1,10 @@
 import { Today, setup } from './js/dom';
 import './style.css';
-import Task from './js/todo';
 import { newProject, newTask } from './js/construc';
-import { GetData, store, storeTask, getTask, updateTask, updateKeys, getkey, storKey } from './js/storage';
+import { updateStorage, GetData, store, storeTask, getTask, updateTask } from './js/storage';
 
 let array = [];
 let recentProject = [];
-let taskey = [];
 localStorage.setItem('today', JSON.stringify(Today));
 
 setup();
@@ -30,44 +28,22 @@ const deleteProject2 = (name) => {
   }
 }
 
-const displayTask = () => {
-  const todo = document.querySelector('.today');
-  free(todo);
-  let a = 0;
-  const k = getkey();
-  if (k) {
-    taskey = k;
-  }
-  taskey.forEach((key) => {
-    const Projectname = document.createElement('h6');
-    const num = a.toString();
-    Projectname.setAttribute('id', num);
-    Projectname.innerHTML = key;
-    todo.append(Projectname);
-    const arr = getTask(key);
-    arr.forEach((task) => {
-      const div = document.createElement('div');
-      div.setAttribute('class', 'to-do');
-      const name = document.createElement('h6');
-      name.innerHTML = task.name;
-      const para = document.createElement('p');
-      para.innerHTML = task.description;
-      const date = document.createElement('h6');
-      date.innerHTML = task.dueDate;
-      div.append(name, date, para);
-      todo.append(div);
-    });
-    a = a + 1;
-  });
+const GetTask = (projectName) => {
+  const taskName = document.getElementById('102').value;
+  const description = document.getElementById('103').value;
+  const Date = document.getElementById('1od').value;
+  const tsk = newTask(taskName, description, Date);
+  storeTask(projectName, tsk);   
 }
 
-function deleteProject() {
+const deleteProject = () => {
   localStorage.clear();
   const k = array.slice(this.parentNode)[0].name;
   array.splice(this.parentNode, 1);
   this.parentNode.remove();
   store(array);
   deleteProject2(k);
+  
 }
 
 const sideBar = (recentProject) => {
@@ -82,13 +58,6 @@ const sideBar = (recentProject) => {
     div.append(name);
     pro.appendChild(div);
   });
-}
-
-function Addtask() {
-  const k = array.slice(this.parentNode)[0].name;
-  console.log(k);
-  form1.style.display = 'flex';
-  document.querySelector('.projectname').innerHTML = k;
 }
 
 
@@ -117,20 +86,17 @@ const display = () => {
     Div.append(titl, AddTask, dele);
     contain.appendChild(Div);
     dele.addEventListener('click', deleteProject);
-    AddTask.addEventListener('click', Addtask);
+    //AddTask.addEventListener('click', addTask(project.task));
   });
 }
+
+
 
 const cross = () => {
   document.getElementById('id01').style.display = 'none';
 }
 // Event listener
-const adPro = document.querySelector('.Add-project');
-adPro.addEventListener('click', (j) => {
-  j.preventDefault();
-  form.style.display = 'flex';
-});
-
+//const adPro = document.querySelector('.')
 const submitButton = document.querySelector('.submit');
 submitButton.addEventListener('click', (getData) => {
   getData.preventDefault();
@@ -153,45 +119,10 @@ cancel.addEventListener('click', (e) => {
   form.style.display = 'none';
 });
 
-const sub = document.querySelector('.task-submit');
-sub.addEventListener('click', (h) => {
-  h.preventDefault();
-  const projectName = document.querySelector('.projectname').innerHTML;
-  const taskName = document.getElementById('102').value;
-  const description = document.getElementById('103').value;
-  const Date = document.getElementById('1od').value;
-  const task = new Task(taskName, description, Date);
-  const k = getTask(projectName); 
-  if (k) {
-    console.log('is present');
-    updateTask(projectName, task);
-  } else {
-    console.log('is not present');
-    const arr = [];
-    arr.push(task);
-    storeTask(projectName, arr);
-    updateKeys(projectName);
-
-  }
-});
-
-const can = document.querySelector('.task-cancel');
-can.addEventListener('click', (c) => {
-  c.preventDefault();
-  form1.reset();
-  form1.style.display = 'none';
-});
-
 const show = document.querySelector('.show');
 show.addEventListener('click', (ek) => {
   ek.preventDefault();
   display();
-});
-
-const showtask = document.querySelector('.show-task');
-showtask.addEventListener('click', (g) => {
-  g.preventDefault();
-  displayTask();
 });
 
 const spa = document.querySelector('.cross');
@@ -201,5 +132,12 @@ const tody = document.getElementById('Today');
 tody.addEventListener('click', (e) => {
   e.preventDefault();
   form1.style.display = 'flex';
-  document.querySelector('.projectname').innerHTML = 'Today';
+  const sub = document.querySelector('.task-submit');
+  sub.addEventListener('click', GetTask(Today.name));
+  const can = document.querySelector('.task-cancel');
+  can.addEventListener('click', (c) => {
+    c.preventDefault();
+    form1.reset();
+    form1.style.display = 'none';
+  });
 });

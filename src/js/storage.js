@@ -23,4 +23,54 @@ function GetData() {
   return false;
 }
 
-export { store, updateStorage, GetData };
+const storeTask = (projectName, task) => {
+  localStorage.setItem(projectName, JSON.stringify(task));
+}
+
+const getTask = (projectName) => {
+  const task = localStorage.getItem(projectName);
+  console.log(task);
+  if (task) {
+    return JSON.parse(task);
+  }
+  return false;
+}
+
+const updateTask = (projectName, task) => {
+  const arr = getTask(projectName);
+  if (arr) {
+    arr.push(task);
+    storeTask(projectName, arr);
+  } else {
+    const aa = [];
+    aa.push(task);
+    storeTask(projectName, aa);
+  }
+}
+
+const storKey = (keyArray) => {
+  localStorage.setItem('keyArray', JSON.stringify(keyArray));
+}
+
+const getkey = () => {
+  const keyarr = localStorage.getItem('keyArray');
+  if (keyarr) {
+    return JSON.parse(keyarr);
+  }
+  return false;
+}
+
+const updateKeys = (key) => {
+  const keyarr = getkey();
+  if (keyarr) {
+    keyarr.push(key);
+    storKey(keyarr);
+  } else {
+    const keyar = [];
+    keyar.push(key);
+    storKey(keyar);
+  }
+}
+
+
+export { store, updateStorage, GetData, storeTask, getTask, updateTask, updateKeys, getkey, storKey };
