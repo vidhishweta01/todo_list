@@ -13,7 +13,7 @@
 ![Screenshot](./asset/Screenshot6.png)
 
 
-Todo list is an app which create list of projects along with their date. we can also add task to each project by default one project "today" is given to which any task can be added, task name cannot be empty. here localstorage has been used to save data.
+Todo list is an app which create list of projects along with their date. we can also add task to each project by default one project "today" is given to which any task can be added, task name cannot be empty. here localstorage has been used to save data. there is a button clear all it will reset the project entirely.
 
 ## Built With
 

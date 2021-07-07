@@ -5,11 +5,10 @@ import { newProject } from './js/construc';
 import {
   GetData, store, storeTask,
   getTask, updateTask,
-  updateKeys, getkey, storKey
-} from './js/storage';
+  updateKeys, getkey, storKey } from './js/storage';
 
 let array = [];
-let recentProject = [];
+const recentProject = [];
 let taskey = [];
 setup();
 const form = document.querySelector('.form');
@@ -21,6 +20,20 @@ const free = (cont) => {
     cont.removeChild(child);
     child = cont.lastElementChild;
   }
+};
+
+const sideBar = (recentProject) => {
+  const pro = document.querySelector('.project');
+  free(pro);
+  recentProject.forEach((project) => {
+    const div = document.createElement('div');
+    div.setAttribute('class', 'side-project')
+    const name = document.createElement('p');
+    name.setAttribute('class', 'titl');
+    name.innerHTML = project;
+    div.append(name);
+    pro.appendChild(div);
+  });
 };
 
 const deleteProject2 = (name) => {
@@ -36,7 +49,6 @@ function deleteAllTask() {
   const j = this.parentNode.firstElementChild.innerHTML;
   localStorage.removeItem(j);
   if (taskey.indexOf(j) !== -1) {
-    const m = taskey.indexOf(j);
     localStorage.removeItem('keyArray');
     taskey.splice(j, 1);
     storKey(taskey);
@@ -44,7 +56,7 @@ function deleteAllTask() {
   k.remove();
   this.remove();
   displayTask();
-};
+}
 
 const displayTask = () => {
   const todo = document.querySelector('.today');
@@ -89,28 +101,13 @@ function deleteProject() {
   this.parentNode.remove();
   store(array);
   deleteProject2(k);
-};
-
-const sideBar = (recentProject) => {
-  const pro = document.querySelector('.project');
-  free(pro);
-  recentProject.forEach((project) => {
-    const div = document.createElement('div');
-    div.setAttribute('class', 'side-project')
-    const name = document.createElement('p');
-    name.setAttribute('class', 'titl');
-    name.innerHTML = project;
-    div.append(name);
-    pro.appendChild(div);
-  });
-};
+}
 
 function Addtask() {
   const k = this.parentNode.firstElementChild.innerHTML;
   form1.style.display = 'flex';
   document.querySelector('.projectname').innerHTML = k;
-};
-
+}
 
 const display = () => {
   const h = GetData();
@@ -169,7 +166,7 @@ submitButton.addEventListener('click', (getData) => {
   form.reset();
   form.style.display = 'none';
   display();
-}); 
+});
 
 const cancel = document.querySelector('.cancel');
 cancel.addEventListener('click', (e) => {
@@ -187,7 +184,7 @@ sub.addEventListener('click', (h) => {
   const Date = document.getElementById('1od').value;
   if (taskName !== '') {
     const task = new Task(taskName, description, Date);
-    const k = getTask(projectName); 
+    const k = getTask(projectName);
     if (k) {
       updateTask(projectName, task);
     } else {

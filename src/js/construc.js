@@ -17,7 +17,7 @@ const newProject = (name) => {
   const contain2 = document.querySelector('.content');
   free(contain2);
 };
-  
+
 const newTask = (taskName, description, duedate, projectName) => {
   const TasK = new Task(taskName, description, duedate);
   updateTask(projectName, TasK);
