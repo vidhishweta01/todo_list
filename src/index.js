@@ -21,7 +21,7 @@ const free = (cont) => {
     cont.removeChild(child);
     child = cont.lastElementChild;
   }
-}
+};
 
 const deleteProject2 = (name) => {
   if (recentProject.indexOf(name) !== -1) {
@@ -29,7 +29,7 @@ const deleteProject2 = (name) => {
     recentProject.splice(j, 1);
     sideBar(recentProject);
   }
-}
+};
 
 function deleteAllTask() {
   const k = this.parentNode.lastElementChild;
@@ -44,7 +44,7 @@ function deleteAllTask() {
   k.remove();
   this.remove();
   displayTask();
-}
+};
 
 const displayTask = () => {
   const todo = document.querySelector('.today');
@@ -78,7 +78,7 @@ const displayTask = () => {
     todo.append(Projectname, allTask, delet);
     delet.addEventListener('click', deleteAllTask);
   });
-}
+};
 
 displayTask();
 
@@ -89,7 +89,7 @@ function deleteProject() {
   this.parentNode.remove();
   store(array);
   deleteProject2(k);
-}
+};
 
 const sideBar = (recentProject) => {
   const pro = document.querySelector('.project');
@@ -103,13 +103,13 @@ const sideBar = (recentProject) => {
     div.append(name);
     pro.appendChild(div);
   });
-}
+};
 
 function Addtask() {
   const k = this.parentNode.firstElementChild.innerHTML;
   form1.style.display = 'flex';
   document.querySelector('.projectname').innerHTML = k;
-}
+};
 
 
 const display = () => {
@@ -139,14 +139,16 @@ const display = () => {
     dele.addEventListener('click', deleteProject);
     AddTask.addEventListener('click', Addtask);
   });
-}
+};
 
 display();
 
 const cross = () => {
   document.getElementById('id01').style.display = 'none';
-}
+};
+
 // Event listener
+
 const adPro = document.querySelector('.Add-project');
 adPro.addEventListener('click', (j) => {
   j.preventDefault();
