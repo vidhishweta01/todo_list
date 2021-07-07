@@ -4,8 +4,16 @@
 
 ![Screenshot](./asset/Screenshot2.png)
 
+![Screenshot](./asset/Screenshot3.png)
 
-Todo list is a app which create list of projects along with their date.
+![Screenshot](./asset/Screenshot4.png)
+
+![Screenshot](./asset/Screenshot5.png)
+
+![Screenshot](./asset/Screenshot6.png)
+
+
+Todo list is an app which create list of projects along with their date. we can also add task to each project by default one project "today" is given to which any task can be added, task name cannot be empty. here localstorage has been used to save data.
 
 ## Built With
 
@@ -25,7 +33,7 @@ do follow these steps given below:
 
 1. Change directory to the root of project.
 
-## $ cd restaurant_page
+## $ cd todo_list
 
 2. install all dev dependencies
 

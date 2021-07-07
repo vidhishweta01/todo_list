@@ -30,6 +30,35 @@ header {
   flex-direction: column;
   margin-top: 8vh;
   margin-left: 180px;
+  background-color: cadetblue;
+}
+
+.proj-name {
+  text-align: center;
+  background-color: rgb(67, 122, 124);
+  color: white;
+  margin-bottom: 0;
+}
+
+.to-do {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid blue;
+  width: 15%;
+  background-color: rgb(209, 240, 219);
+  padding: 1vh;
+  text-align: center;
+}
+
+.all-task {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0;
+}
+
+.all-task-delete {
+  width: 25%;
+  margin-left: 33vw;
 }
 
 .side-project {
@@ -85,6 +114,7 @@ header {
   justify-content: space-between;
 }
 
+.clear-all,
 .task-submit,
 .task-cancel,
 .submit,
@@ -94,6 +124,7 @@ header {
   color: wheat;
 }
 
+.clear-all,
 .task-cancel,
 .cancel {
   background-color: rgb(255, 115, 0);
@@ -136,7 +167,6 @@ header {
 }
 
 .contain {
-  margin-top: 3vh;
   margin-left: 3vw;
   text-align: center;
   padding: 10px;

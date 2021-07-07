@@ -1,13 +1,17 @@
+import { Today } from './dom';
 function store(array) {
   localStorage.setItem('array', JSON.stringify(array));
 }
 
 function updateStorage(data) {
-  const arr = localStorage.getItem('array');
+  const arr = GetData();
   if (arr) {
-    const array = JSON.parse(arr);
-    array.push(data);
-    store(array);
+    if (arr.indexOf(data) == -1) {
+      arr.push(data);
+      store(arr);
+    } else {
+      return true;
+    }
   } else {
     const aa = [];
     aa.push(data);
@@ -29,7 +33,6 @@ const storeTask = (projectName, task) => {
 
 const getTask = (projectName) => {
   const task = localStorage.getItem(projectName);
-  console.log(task);
   if (task) {
     return JSON.parse(task);
   }
@@ -71,6 +74,5 @@ const updateKeys = (key) => {
     storKey(keyar);
   }
 }
-
 
 export { store, updateStorage, GetData, storeTask, getTask, updateTask, updateKeys, getkey, storKey };

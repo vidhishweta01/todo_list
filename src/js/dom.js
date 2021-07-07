@@ -32,13 +32,15 @@ const sideNav = () => {
   const show = document.createElement('button');
   show.setAttribute('class', 'show');
   show.innerHTML = 'show';
-
+  const br1 = document.createElement('br');
   const showTask = document.createElement('button');
   showTask.setAttribute('class', 'show-task');
   showTask.innerHTML = 'Show Task';
-  project.append(defaultProject, projHead, projectt, AddProject, show, showTask);
-
-  element.append(project);
+  project.append(defaultProject, projHead, projectt, AddProject, show, br1, showTask);
+  const clearAll = document.createElement('button');
+  clearAll.setAttribute('class', 'clear-all');
+  clearAll.innerHTML = 'clear All';
+  element.append(project, clearAll);
 
   document.body.append(element);
 }
@@ -55,7 +57,6 @@ const contain = () => {
 const contain1 = () => {
   const element = document.createElement('div');
   element.setAttribute('class', 'today');
-  element.innerHTML = 'hello';
   document.body.append(element);
 }
 
@@ -132,7 +133,7 @@ const contain3 = () => {
   span.innerHTML = '&times;';
   const par = document.createElement('div');
   par.setAttribute('class', 'conten');
-  par.innerHTML = 'cannot create empty project';
+  par.innerHTML = 'cannot create empty project or empty task';
   contain.append(span, par);
   modalContent.append(contain);
   element.append(modalContent);
