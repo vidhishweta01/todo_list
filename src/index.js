@@ -80,7 +80,7 @@ function editOneTask() {
   const h = getTask(j);
   const k = this.parentNode.children[2].innerHTML;
   console.log(k);
-  let arr = []
+  const arr = [];
   if (h) {
     h.forEach((task) => {
       arr.push(task.name);
@@ -90,7 +90,7 @@ function editOneTask() {
     localStorage.removeItem(j);
     storeTask(j, h);
     document.getElementById('id01').style.display = 'none';
-    displayTask();
+    displayTask(); // eslint-disable-line
   }
 }
 
@@ -98,10 +98,8 @@ function deleteOneTask() {
   const j = this.parentNode.firstElementChild.innerHTML;
   const h = getTask(j);
   const k = this.parentNode.children[2].innerHTML;
-  console.log(k);
-  let arr = []
-  if (h)
-  {
+  const arr = [];
+  if (h) {
     h.forEach((task) => {
       arr.push(task.name);
     });
@@ -123,12 +121,12 @@ function showTasks() {
   edi.innerHTML = 'edit';
   const k = this.parentNode.previousSibling.innerHTML;
   free(div);
-  let c = this.children;
+  const c = this.children;
   let txt = '';
-  for (let i = 0; i < c.length; i++) {
-    txt = txt +'<h4>' + c[i].innerHTML+ '</h4>' + '<br>';
+  for (let i = 0; i < c.length; i = i + 1) {
+    txt = txt +'<h4>' + c[i].innerHTML+ '</h4>' + '<br>';  // eslint-disable-line
   }
-  txt ='<h4>' + k + '</h4>' + '<br>' + txt;
+  txt = '<h4>' + k + '</h4>' + '<br>' + txt;  // eslint-disable-line
   div.innerHTML = txt;
   div.append(del, edi);
   document.querySelector('.contain').style.height = '100%';
