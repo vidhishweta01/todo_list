@@ -1,8 +1,8 @@
-function store(array) {
+const store = (array) => {
   localStorage.setItem('array', JSON.stringify(array));
 }
 
-function GetData() {
+const GetData = () => {
   const p = localStorage.getItem('array');
   if (p) {
     return JSON.parse(p);
@@ -10,7 +10,7 @@ function GetData() {
   return false;
 }
 
-function updateStorage(data) {
+const updateStorage = (data) => {
   const arr = GetData();
   if (arr) {
     if (arr.indexOf(data) === -1) {
