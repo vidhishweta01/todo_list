@@ -123,7 +123,7 @@ function showTasks() {
   free(div);
   const c = this.children;
   let txt = '';
-  for (let i = 0; i < c.length; i = i + 1) {
+  for (let i = 0; i < c.length; i = i + 1) { // eslint-disable-line
     txt = txt +'<h4>' + c[i].innerHTML+ '</h4>' + '<br>';  // eslint-disable-line
   }
   txt = '<h4>' + k + '</h4>' + '<br>' + txt;  // eslint-disable-line
