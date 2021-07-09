@@ -40,7 +40,7 @@ do follow these steps given below:
 
 1. Change directory to the root of project.
 
-## $ cd todo_list
+# $ cd todo_list
 
 2. install all dev dependencies
 
