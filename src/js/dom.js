@@ -133,7 +133,12 @@ const contain3 = () => {
   span.innerHTML = '&times;';
   const par = document.createElement('div');
   par.setAttribute('class', 'conten');
-  par.innerHTML = 'cannot create empty project or empty task';
+  const head = document.createElement('h3');
+  head.innerHTML = 'cannot create empty project or empty task';
+  head.setAttribute('class', 'warning');
+  const div = document.createElement('div');
+  div.setAttribute('class', 'show-Task');
+  par.append(head, div);
   contain.append(span, par);
   modalContent.append(contain);
   element.append(modalContent);

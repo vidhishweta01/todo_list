@@ -47,6 +47,7 @@ header {
   background-color: rgb(209, 240, 219);
   padding: 1vh;
   text-align: center;
+  cursor: pointer;
 }
 
 .all-task {
@@ -169,6 +170,16 @@ header {
   margin-left: 3vw;
   text-align: center;
   padding: 10px;
+}
+
+.show-Task {
+  font-size: large;
+  line-height: 15px;
+}
+
+.show-Task > button {
+  margin-right: 1vw;
+  padding: 1vh;
 }
 
 .cross {

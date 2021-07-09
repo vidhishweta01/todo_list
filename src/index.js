@@ -43,6 +43,14 @@ const deleteProject2 = (name) => {
     recentProject.splice(j, 1);
     sideBar(recentProject);
   }
+  localStorage.removeItem(name);
+  if (taskey.indexOf(name) !== -1) {
+    localStorage.removeItem('keyArray');
+    const k = taskey.indexOf(name);
+    taskey.splice(k, 1);
+    storKey(taskey);
+  }
+  displayTask(); // eslint-disable-line
 };
 
 function deleteAllTask() {
@@ -57,6 +65,77 @@ function deleteAllTask() {
   k.remove();
   this.remove();
   displayTask(); // eslint-disable-line
+}
+
+function editOneTask() {
+  const l = this.parentNode.children;
+  const m = document.querySelector('.task-form').children;
+  m[0].innerHTML = l[0].innerHTML;
+  m[1].value = l[2].innerHTML;
+  m[3].value = l[6].innerHTML;
+  m[5].value = l[4].innerHTML;
+  document.getElementById('id01').style.display = 'none';
+  document.querySelector('.task-form').style.display = 'flex';
+  const j = this.parentNode.firstElementChild.innerHTML;
+  const h = getTask(j);
+  const k = this.parentNode.children[2].innerHTML;
+  console.log(k);
+  let arr = []
+  if (h) {
+    h.forEach((task) => {
+      arr.push(task.name);
+    });
+    const i = arr.indexOf(k);
+    h.splice(i, 1);
+    localStorage.removeItem(j);
+    storeTask(j, h);
+    document.getElementById('id01').style.display = 'none';
+    displayTask();
+  }
+}
+
+function deleteOneTask() {
+  const j = this.parentNode.firstElementChild.innerHTML;
+  const h = getTask(j);
+  const k = this.parentNode.children[2].innerHTML;
+  console.log(k);
+  let arr = []
+  if (h)
+  {
+    h.forEach((task) => {
+      arr.push(task.name);
+    });
+    const i = arr.indexOf(k);
+    h.splice(i, 1);
+    localStorage.removeItem(j);
+    storeTask(j, h);
+    document.getElementById('id01').style.display = 'none';
+    displayTask(); // eslint-disable-line
+  }
+}
+
+function showTasks() {
+  const div = document.querySelector('.show-Task');
+  const del = document.createElement('button');
+  del.innerHTML = 'delete';
+  const edi = document.createElement('button');
+  del.innerHTML = 'delete';
+  edi.innerHTML = 'edit';
+  const k = this.parentNode.previousSibling.innerHTML;
+  free(div);
+  let c = this.children;
+  let txt = '';
+  for (let i = 0; i < c.length; i++) {
+    txt = txt +'<h4>' + c[i].innerHTML+ '</h4>' + '<br>';
+  }
+  txt ='<h4>' + k + '</h4>' + '<br>' + txt;
+  div.innerHTML = txt;
+  div.append(del, edi);
+  document.querySelector('.contain').style.height = '100%';
+  document.querySelector('.warning').style.display = 'none';
+  document.getElementById('id01').style.display = 'block';
+  del.addEventListener('click', deleteOneTask);
+  edi.addEventListener('click', editOneTask);
 }
 
 const displayTask = () => {
@@ -87,6 +166,7 @@ const displayTask = () => {
       date.innerHTML = task.dueDate;
       div.append(name, date, para);
       allTask.append(div);
+      div.addEventListener('click', showTasks);
     });
     todo.append(Projectname, allTask, delet);
     delet.addEventListener('click', deleteAllTask);
@@ -96,7 +176,7 @@ const displayTask = () => {
 displayTask();
 
 function deleteProject() {
-  localStorage.clear();
+  localStorage.removeItem('array');
   const k = array.slice(this.parentNode)[0].name;
   array.splice(this.parentNode, 1);
   this.parentNode.remove();

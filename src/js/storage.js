@@ -40,10 +40,11 @@ const getTask = (projectName) => {
 };
 
 const updateTask = (projectName, task) => {
-  const arr = getTask(projectName);
+  const arr = localStorage.getItem(projectName);
   if (arr) {
-    arr.push(task);
-    storeTask(projectName, arr);
+    const array = JSON.parse(arr);
+    array.push(task);
+    storeTask(projectName, array);
   } else {
     const aa = [];
     aa.push(task);
