@@ -1,6 +1,6 @@
 const store = (array) => {
   localStorage.setItem('array', JSON.stringify(array));
-}
+};
 
 const GetData = () => {
   const p = localStorage.getItem('array');
@@ -8,7 +8,7 @@ const GetData = () => {
     return JSON.parse(p);
   }
   return false;
-}
+};
 
 const updateStorage = (data) => {
   const arr = GetData();
@@ -25,7 +25,7 @@ const updateStorage = (data) => {
     store(aa);
   }
   return true;
-}
+};
 
 const storeTask = (projectName, task) => {
   localStorage.setItem(projectName, JSON.stringify(task));
