@@ -303,6 +303,7 @@ const clearAll = document.querySelector('.clear-all');
 clearAll.addEventListener('click', (g) => {
   g.preventDefault();
   localStorage.clear();
+  displayTask();
 });
 
 const spa = document.querySelector('.cross');
