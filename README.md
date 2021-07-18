@@ -1,5 +1,6 @@
 # todo_list
-there is a default project named today.
+
+Todo list is an app which create list of projects along with their date. we can also add task to each project by default one project "today" is given to which any task can be added, task name cannot be empty. here localstorage has been used to save data. there is a button clear all it will reset the project entirely.
 
 ![Screenshot](./asset/Screenshot.png)
 
@@ -18,9 +19,6 @@ there is a default project named today.
 on clicking the particular task it shows the task as layered panel and it can be deleted or updated there.
 
 ![Screenshot](./asset/Screenshot7.png)
-
-
-Todo list is an app which create list of projects along with their date. we can also add task to each project by default one project "today" is given to which any task can be added, task name cannot be empty. here localstorage has been used to save data. there is a button clear all it will reset the project entirely.
 
 ## Built With
 
