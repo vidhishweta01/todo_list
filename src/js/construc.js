@@ -1,6 +1,8 @@
 import Project from './project';
 import Task from './todo';
-import { updateStorage, updateTask, updateKeys, storeTask, getTask } from './storage';
+import {
+  updateStorage, updateTask, updateKeys, storeTask, getTask,
+} from './storage';
 
 const free = (cont) => {
   let child = cont.lastElementChild;

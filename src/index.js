@@ -1,6 +1,5 @@
 import { setup } from './js/dom';
 import './style.css';
-import Task from './js/todo';
 import { newProject, newTask} from './js/construc';
 import {
   GetData, store, storeTask,
