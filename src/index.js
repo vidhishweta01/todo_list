@@ -1,6 +1,6 @@
 import { setup } from './js/dom';
 import './style.css';
-import { newProject, newTask} from './js/construc';
+import { newProject, newTask } from './js/construc';
 import {
   GetData, store, storeTask,
   getTask, getkey, storKey,
@@ -77,7 +77,6 @@ function editOneTask() {
   const j = this.parentNode.firstElementChild.innerHTML;
   const h = getTask(j);
   const k = this.parentNode.children[2].innerHTML;
-  console.log(k);
   const arr = [];
   if (h) {
     h.forEach((task) => {
