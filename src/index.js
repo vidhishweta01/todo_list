@@ -1,11 +1,9 @@
 import { setup } from './js/dom';
 import './style.css';
-import Task from './js/todo';
-import { newProject } from './js/construc';
+import { newProject, newTask } from './js/construc';
 import {
   GetData, store, storeTask,
-  getTask, updateTask,
-  updateKeys, getkey, storKey,
+  getTask, getkey, storKey,
 } from './js/storage';
 
 let array = [];
@@ -79,7 +77,6 @@ function editOneTask() {
   const j = this.parentNode.firstElementChild.innerHTML;
   const h = getTask(j);
   const k = this.parentNode.children[2].innerHTML;
-  console.log(k);
   const arr = [];
   if (h) {
     h.forEach((task) => {
@@ -262,16 +259,7 @@ sub.addEventListener('click', (h) => {
   const description = document.getElementById('103').value;
   const Date = document.getElementById('1od').value;
   if (taskName !== '') {
-    const task = new Task(taskName, description, Date);
-    const k = getTask(projectName);
-    if (k) {
-      updateTask(projectName, task);
-    } else {
-      const arr = [];
-      arr.push(task);
-      storeTask(projectName, arr);
-      updateKeys(projectName);
-    }
+    newTask(taskName, description, Date, projectName);
   } else {
     document.getElementById('id01').style.display = 'block';
   }
