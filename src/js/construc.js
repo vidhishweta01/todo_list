@@ -16,8 +16,6 @@ const newProject = (name) => {
   const project = new Project();
   project.name = name;
   updateStorage(project);
-  const contain2 = document.querySelector('.content');
-  free(contain2);
 };
 
 const newTask = (taskName, description, duedate, projectName) => {
