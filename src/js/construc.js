@@ -4,18 +4,11 @@ import {
   updateStorage, updateTask, updateKeys, storeTask, getTask,
 } from './storage';
 
-const free = (cont) => {
-  let child = cont.lastElementChild;
-  while (child) {
-    cont.removeChild(child);
-    child = cont.lastElementChild;
-  }
-};
-
 const newProject = (name) => {
   const project = new Project();
   project.name = name;
   updateStorage(project);
+  return true;
 };
 
 const newTask = (taskName, description, duedate, projectName) => {
@@ -29,6 +22,7 @@ const newTask = (taskName, description, duedate, projectName) => {
     storeTask(projectName, arr);
     updateKeys(projectName);
   }
+  return true;
 };
 
 export { newProject, newTask };
